@@ -17,9 +17,9 @@ const kidsAndFamilyMoviescontroller = require("./controllers/kidsAndFamilyMovies
 
 app.use("/users", signupcontroller);
 app.use("/prime", moviesDatacontroller);
-app.use("/recommended", recommendedcontroller);
-app.use("/kidsAndFamilyMovies", kidsAndFamilyMoviescontroller);
-app.use("/popularMovies", popularMoviescontroller);
+app.use("/continue", recommendedcontroller);
+app.use("/kids", kidsAndFamilyMoviescontroller);
+app.use("/OriginalMovies", popularMoviescontroller);
 app.use("/action", actioncontroller);
 
 app.listen(5000, async () => {

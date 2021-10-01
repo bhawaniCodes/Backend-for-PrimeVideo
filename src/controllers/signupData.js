@@ -36,6 +36,23 @@ router.get("/logindata/:id", async function (req, res) {
 });
 
 
+router.patch("/watched", async function (req, res) {
+    try {
+
+        const id = "61557c3b75fe798878522c18";
+        const addData = {     
+                title: "Checking array 3"
+        }
+        let signup = await Signup.findOneAndUpdate({_id: id}, {$push: {wishList : addData} });
+
+        return res.send(signup);
+    }
+    catch {
+        return res.send(err.message);
+    }
+});
+
+
 
 module.exports = router;
 
