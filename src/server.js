@@ -5,9 +5,20 @@ const app = new express();
 // // const session = require('express-session');
 
 app.use(express.json());
+const signupcontroller = require("./controllers/signupData");
+const moviesDatacontroller = require("./controllers/moviesData");
+const recommendedcontroller = require("./controllers/recommended");
+const popularMoviescontroller = require("./controllers/PopularMovies");
+const actioncontroller = require("./controllers/action");
+const kidsAndFamilyMoviescontroller = require("./controllers/kidsAndFamilyMovies");
 
-const testRoute = require('./routes/test.route')
-app.use('/user', testRoute);
+
+app.use("/users", signupcontroller);
+app.use("/prime", moviesDatacontroller);
+app.use("/recommended", recommendedcontroller);
+app.use("/kidsAndFamilyMovies", kidsAndFamilyMoviescontroller);
+app.use("/popularMovies", popularMoviescontroller);
+app.use("/action", actioncontroller);
 
 
 app.listen(5000, async () => {
