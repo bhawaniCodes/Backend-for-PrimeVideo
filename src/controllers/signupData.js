@@ -27,12 +27,13 @@ router.post("/signup", async function (req, res) {
 });
 
 
-router.get("/logindata/:id", async function (req, res) {
+router.post("/logindata", async function (req, res) {
+    let formData = { ...req.body };
     try {
         let f = false; let doc;
         let signup = await Signup.find().lean().exec()
         signup.forEach((el) => {
-            if (el.email === req.params.id) {
+            if (el.email === formData.email && el.password === formData.password) {
                 f = true;
                 doc = el;
             }
@@ -48,6 +49,16 @@ router.get("/logindata/:id", async function (req, res) {
     catch(err) {
         return res.send(err.message);
     }
+});
+
+router.get('/userLoginDetail', async (req, res) => {
+    let user_data = await Login.find().lean().exec();
+    res.send(user_data);
+})
+
+router.delete("/userSignout", async (req, res) => {
+    await Login.deleteMany();
+    res.send('hello');
 });
 
 
