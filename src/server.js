@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const connect = require('./configs/db')
 const app = new express();
@@ -21,9 +22,9 @@ app.use("/OriginalMovies", popularMoviescontroller);
 app.use("/action", actioncontroller);
 
 
-app.listen(5000, async () => {
+app.listen(process.env.PORT, async () => {
     await connect();
-    console.log("Listening on port 5000");
+    console.log(`Listening on port ${process.env.PORT}`);
 });
 
 
