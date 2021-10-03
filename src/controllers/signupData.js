@@ -62,7 +62,7 @@ router.delete("/userSignout", async (req, res) => {
 });
 
 router.get('/userData:id', async (req, res) => {
-    const id = req.params.id; console.log(id);
+    const id = req.params.id; 
     let user_data = await Signup.findOne({_id:id}); 
     res.send(user_data);
 })
