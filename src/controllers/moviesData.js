@@ -6,12 +6,11 @@ const Movies =require("../models/movies.model")
 
 
 router.get("", async function (req, res) {
-    
   try{  
-    const movies= await Movies.find().lean().exec();
+      const movies = await Movies.find().lean().exec(); 
     return res.send(movies)
 }
-    catch(err){
+  catch (err) {
         res.send(err.message)
     }
 })

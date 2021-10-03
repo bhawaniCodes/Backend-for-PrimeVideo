@@ -61,16 +61,17 @@ router.delete("/userSignout", async (req, res) => {
     res.send('hello');
 });
 
+router.get('/userData:id', async (req, res) => {
+    const id = req.params.id; console.log(id);
+    let user_data = await Signup.findOne({_id:id}); 
+    res.send(user_data);
+})
 
-router.patch("/watched", async function (req, res) {
+router.patch("/watched:id", async function (req, res) {
     try {
-
-        const id = "61557c3b75fe798878522c18";
-        const addData = {     
-                title: "Checking array 3"
-        }
+        const id = req.params.id;
+        const addData = req.body;
         let signup = await Signup.findOneAndUpdate({_id: id}, {$push: {wishList : addData} });
-
         return res.send(signup);
     }
     catch {
