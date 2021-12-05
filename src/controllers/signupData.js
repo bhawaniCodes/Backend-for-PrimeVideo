@@ -41,7 +41,7 @@ router.post("/logindata", async function (req, res) {
         if (f) {
             await Login.deleteMany();
             await Login.create(doc);
-            res.send(doc)
+            res.send(doc);
         }
         else {
             await Login.deleteMany();
